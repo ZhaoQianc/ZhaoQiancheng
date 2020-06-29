@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"  src="../js/vue.js"> </script>
+</head>
+<body>
+	<div id="app">
+		{{num}}
+		<button @contextmenu.once="add">加</button>
+		<button @keyup.13="add">加</button>
+		<button v-on:click="rem">减</button>
+		<button @click.ctrl="rem">减</button>
+		</div>
+	<script type="text/javascript">
+		var app= new Vue({
+			el:"#app",
+			data:{
+				num:18
+			},
+			methods:{
+				add(){
+					this.num++
+				},
+				rem(){
+					this.num--
+				}
+			}
+		})
+	</script>
+</body>
+</html>

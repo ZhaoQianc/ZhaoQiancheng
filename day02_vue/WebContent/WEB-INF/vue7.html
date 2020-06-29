@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"  src="../js/vue.js"> </script>
+</head>
+<body>
+	<div id="app">
+		<ul>
+			<li v-for="(user,index) in users">
+				{{index}}-{{user.name}}:{{user.sex}}:{{user.age}}
+			</li>
+		</ul>
+		<ul>
+			<li v-for="(yg,key,index) in emp">
+				{{index}}-{{key}}-{{yg}}
+			</li>
+		</ul>
+		</div>
+	<script type="text/javascript">
+		var app= new Vue({
+			el:"#app",
+			data:{
+				users:[
+				      {name:'柳岩',sex:'女',age:'18'},
+				      {name:'刘亦菲',sex:'女',age:'19'},
+				      {name:'杨幂',sex:'女',age:'18'},
+				      {name:'迪丽热巴',sex:'女',age:'18'}
+				      ],
+			emp:{name:'娄艺潇',sex:'女',age:'18'}		
+			}
+		})
+	</script>
+</body>
+</html>

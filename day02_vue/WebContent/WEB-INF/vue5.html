@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Insert title here</title>
+<script type="text/javascript"  src="../js/vue.js"> </script>
+</head>
+<body>
+	<div id="app">
+		<input type="checkbox" v-model="ah" value="守望先锋">守望先锋
+		<input type="checkbox" v-model="ah" value="英雄联盟">英雄联盟
+		<input type="checkbox" v-model="ah" value="王者荣耀">王者荣耀
+		<input type="checkbox" v-model="ah" value="刺激战场">刺激战场
+	</div>
+	<script type="text/javascript">
+		var app= new Vue({
+			el:"#app",
+			data:{
+				ah:[]
+			}
+		})
+	</script>
+</body>
+</html>
