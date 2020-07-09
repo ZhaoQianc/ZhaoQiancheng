@@ -15,7 +15,7 @@ import cn.jiyun.service.StuSerivce;
 public class stuController {
 		@Autowired
 		private StuSerivce ss;
-		@RequestMapping("findAll")
+		@RequestMapping("findall")
 		public String findALL(){
 			return "show2";
 		}
