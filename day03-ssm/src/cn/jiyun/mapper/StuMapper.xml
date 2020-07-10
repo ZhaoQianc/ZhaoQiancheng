@@ -20,4 +20,19 @@
 		and a.cid = b.cid
 		</where>
 	</select>
+	<select id="findClazz" resultType="Clazz">
+		select * from class
+	</select>
+	<insert id="addStu" parameterType="Stu">
+		insert into stu value(null,#{name},#{sex},null,#{sr},#{cid})
+	</insert>
+	<update id="updateStu" parameterType="Stu">
+		update stu set name =#{name},sex=#{sex},sr=#{sr},cid=#{cid} where id=#{id}
+	</update>
+	<delete id="delStu">
+		delete from stu where id in
+		<foreach collection="ids" item="id" open="(" close=")" separator=",">
+		 #{id}
+		</foreach>
+	</delete>
 </mapper>

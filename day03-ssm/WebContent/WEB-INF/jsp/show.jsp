@@ -9,6 +9,7 @@
 <script type="text/javascript"  src="${pageContext.request.contextPath}/js/axios-0.18.0.js"> </script>
 </head>
 <body>
+<a href="${pageContext.request.contextPath}/stu/toadd.action">添加</a>
 <table id="tid" border="1">
 	<tr>
 		<td>编号</td>
