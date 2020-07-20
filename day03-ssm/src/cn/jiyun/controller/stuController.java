@@ -8,6 +8,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.github.pagehelper.PageHelper;
+import com.github.pagehelper.PageInfo;
+
 import cn.jiyun.pojo.Clazz;
 import cn.jiyun.pojo.Stu;
 import cn.jiyun.service.StuSerivce;
@@ -23,10 +26,12 @@ public class stuController {
 		}
 	@RequestMapping("toshow")
 	@ResponseBody
-	public List<Stu> toshow(){
+	public PageInfo<Stu> toshow(Integer pageNum,Integer pageSize){
+		PageHelper.startPage(pageNum, 3);
 		List<Stu> slist=ss.findAll();
+		PageInfo<Stu> page = new PageInfo<Stu>(slist);
 		System.out.println(slist);
-		return slist;
+		return page;
 	}
 	@RequestMapping("toadd")
 	public String toadd(){

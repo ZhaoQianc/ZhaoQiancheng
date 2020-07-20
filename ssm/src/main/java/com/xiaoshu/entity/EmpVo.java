@@ -1,0 +1,48 @@
+package com.xiaoshu.entity;
+
+import java.util.Date;
+
+import org.springframework.format.annotation.DateTimeFormat;
+
+public class EmpVo  extends Emp{
+
+	private String dname;
+	private Integer age1;
+	private Integer age2;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date start;
+	@DateTimeFormat(pattern="yyyy-MM-dd")
+	private Date end;
+	public String getDname() {
+		return dname;
+	}
+	public void setDname(String dname) {
+		this.dname = dname;
+	}
+	public Integer getAge1() {
+		return age1;
+	}
+	public void setAge1(Integer age1) {
+		this.age1 = age1;
+	}
+	public Integer getAge2() {
+		return age2;
+	}
+	public void setAge2(Integer age2) {
+		this.age2 = age2;
+	}
+	public Date getStart() {
+		return start;
+	}
+	public void setStart(Date start) {
+		this.start = start;
+	}
+	public Date getEnd() {
+		return end;
+	}
+	public void setEnd(Date end) {
+		this.end = end;
+	}
+	 
+	
+}

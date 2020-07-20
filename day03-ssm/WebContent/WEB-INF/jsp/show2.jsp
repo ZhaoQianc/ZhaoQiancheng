@@ -67,8 +67,8 @@
 			ids:[]
 		},
 		created(){
-			axios.post("${pageContext.request.contextPath}/stu/toshow.action").then(function(res){
-				table.slist = res.data;		
+			axios.post("${pageContext.request.contextPath}/stu/toshow.action?pageNum=1").then(function(res){
+				table.slist = res.data.list;		
 			});
 			axios.post("${pageContext.request.contextPath}/stu/findClazz.action").then(function(res){
 				table.clist=res.data;

@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.xiaoshu.dao.EmpMapper">
+  <resultMap id="BaseResultMap" type="com.xiaoshu.entity.Emp">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <id column="tb_emp_id" jdbcType="INTEGER" property="tbEmpId" />
+    <result column="tb_emp_name" jdbcType="VARCHAR" property="tbEmpName" />
+    <result column="tb_emp_sex" jdbcType="VARCHAR" property="tbEmpSex" />
+    <result column="tb_emp_age" jdbcType="INTEGER" property="tbEmpAge" />
+    <result column="tb_emp_address" jdbcType="VARCHAR" property="tbEmpAddress" />
+    <result column="tb_emp_img" jdbcType="VARCHAR" property="tbEmpImg" />
+    <result column="tb_emp_birthday" jdbcType="DATE" property="tbEmpBirthday" />
+    <result column="tb_emp_shengid" jdbcType="INTEGER" property="tbEmpShengid" />
+    <result column="tb_emp_sid" jdbcType="INTEGER" property="tbEmpSid" />
+    <result column="tb_emp_xid" jdbcType="INTEGER" property="tbEmpXid" />
+    <result column="tb_emp_did" jdbcType="INTEGER" property="tbEmpDid" />
+  </resultMap>
+  <sql id="Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Update_By_Example_Where_Clause">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    <where>
+      <foreach collection="example.oredCriteria" item="criteria" separator="or">
+        <if test="criteria.valid">
+          <trim prefix="(" prefixOverrides="and" suffix=")">
+            <foreach collection="criteria.criteria" item="criterion">
+              <choose>
+                <when test="criterion.noValue">
+                  and ${criterion.condition}
+                </when>
+                <when test="criterion.singleValue">
+                  and ${criterion.condition} #{criterion.value}
+                </when>
+                <when test="criterion.betweenValue">
+                  and ${criterion.condition} #{criterion.value} and #{criterion.secondValue}
+                </when>
+                <when test="criterion.listValue">
+                  and ${criterion.condition}
+                  <foreach close=")" collection="criterion.value" item="listItem" open="(" separator=",">
+                    #{listItem}
+                  </foreach>
+                </when>
+              </choose>
+            </foreach>
+          </trim>
+        </if>
+      </foreach>
+    </where>
+  </sql>
+  <sql id="Base_Column_List">
+    <!--
+      WARNING - @mbg.generated
+    -->
+    tb_emp_id, tb_emp_name, tb_emp_sex, tb_emp_age, tb_emp_address, tb_emp_img, tb_emp_birthday, 
+    tb_emp_shengid, tb_emp_sid, tb_emp_xid, tb_emp_did
+  </sql>
+  <select id="findemp" parameterType="empVo" resultType="empVo">
+    select e.*,d.name as dname from tb_emp e ,dept d 
+    <where>
+      e.tb_emp_did=d.id
+      <if test="tbEmpName!=null and tbEmpName!=''">
+        and e.tb_emp_name like '%${tbEmpName}%'
+      </if>
+      <if test="age1!=null">
+        and  e.tb_emp_age &gt;= #{tbEmpAge}
+      </if>
+      <if test="age2!=null">
+        and  e.tb_emp_age &lt;= #{tbEmpAge}
+      </if>
+      <if test="tbEmpSex!=null and tbEmpSex!=''">
+       and e.tb_emp_sex =#{tbEmpSex}
+      </if>
+      <if test="start!=null">
+       and e.tb_emp_birthday =#{start}
+      </if>
+      <if test="end!=null">
+       and e.tb_emp_birthday =#{end}
+      </if>
+      <if test="TbEmpDid!=null and TbEmpDid!=0">
+         and  e.tb_emp_did =#{TbEmpDid}
+      </if>
+    </where>
+  </select>
+</mapper>
